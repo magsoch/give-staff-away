@@ -1,0 +1,40 @@
+{% extends 'simple.html' %}
+{% block title %}Lista administratorów {% endblock %}
+{% block content %}
+    <div class="slogan container container--90">
+        <div class="slogan--item" align="center">
+            <h2>Administratorzy: </h2>
+            <div align="right">
+                <a href="{% url 'set_admin_permission' %}" class="btn btn--without-border">Nadaj uprawnienia administratora</a>
+                <a href="#" class="btn btn--without-border">Dodaj administratora</a>
+            </div>
+            <table style="font-size: large; table-layout: auto; width: 100%;">
+                <thead>
+                    <tr style="border-bottom-color: black">
+                        <th>ID</th>
+                        <th>Użytkownik</th>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for admin in admins %}
+                    <tr>
+                        <td>{{ admin.id }}</td>
+                        <td>{{ admin.username }}</td>
+                        <td>{{ admin.first_name }}</td>
+                        <td>{{ admin.last_name }}</td>
+                        <td>{{ admin.email }}</td>
+                        <td>
+                            <a href="{% url 'delete_user' pk=admin.pk %}" class="btn btn--without-border">Usuń</a>
+                            <a href="{% url 'modify_user' pk=admin.pk %}" class="btn btn--without-border">Modyfikuj</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

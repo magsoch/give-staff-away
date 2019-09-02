@@ -1,0 +1,16 @@
+{% extends 'simple.html' %}
+{% block title %}Nadawanie uprawnień administratora{% endblock %}
+{% block content %}
+    <section class="login-page">
+      <h2>Wybierz użytkownika</h2>
+      <form method="post" class="form--contact">
+          {% csrf_token %}
+            <div class="form-group" style="font-size: large">
+                {{ form.as_p }}
+            </div>
+            <div class="form-group form-group--buttons">
+              <button class="btn" type="submit">Nadaj uprawnienia</button>
+            </div>
+      </form>
+    </section>
+{% endblock %}

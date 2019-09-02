@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Dołącz do nas{% endblock %}
+{% block content %}
+    <h2>Załóż konto</h2>
+    <form method="post">
+    {% csrf_token %}\\
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Załóż konto </button>
+    </form>
+{% endblock %}

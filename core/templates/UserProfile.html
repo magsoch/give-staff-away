@@ -1,0 +1,29 @@
+{% extends 'simple.html' %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block content %}
+    <div class="slogan container container--90">
+        <div class="slogan--item" align="center">
+            <h2>Użytkownik {{ user.username }}</h2>
+            <table style="font-size: large; table-layout: auto; width: 70%;">
+                <thead>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Primary Key</td><td>{{ user.id }}</td>
+                        <td rowspan="3"><a href="{% url 'profile-modify' pk=user.pk %}" class="btn btn--without-border">Modyfikuj dane</a></td>
+                    </tr>
+                    <tr><td>Nazwa użytkownika</td><td>{{ user.username }}</td></tr>
+                    <tr><td>Imię</td><td>{{ user.first_name }}</td></tr>
+                    <tr>
+                        <td>Nazwisko</td><td>{{ user.last_name }}</td>
+                        <td rowspan="2"><a href="{% url 'change_password' %}" class="btn btn--without-border">Zmień hasło</a></td>
+                    </tr>
+                    <tr><td>email</td><td>{{ user.email }}</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
